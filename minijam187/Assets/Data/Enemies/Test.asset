@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea4395e0cad0da4283aeaab6dbb4464, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  enemySprite: {fileID: 21300000, guid: 6a94f1f14a9554646b01d64c30a3e41a, type: 3}
+  enemyHoveredSprite: {fileID: 21300000, guid: b7a4665789505ad4abe49877858dd4af, type: 3}
+  maxHealth: 10
+  damage: 5
