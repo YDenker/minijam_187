@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60ad205b6d4d1b40bd299a163e4573c, type: 3}
-  m_Name: Toss
+  m_Script: {fileID: 11500000, guid: 97685b25a8db33a4bb88ac641eb9010d, type: 3}
+  m_Name: DamageLight
   m_EditorClassIdentifier: 
-  Amount: 10
-  Type: 1
+  Type: 0

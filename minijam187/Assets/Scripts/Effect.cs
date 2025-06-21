@@ -1,11 +1,13 @@
 using System;
-using UnityEngine;
 
 [Serializable]
-public abstract class Effect : ScriptableObject
+public class Effect
 {
-    public virtual void Apply(IEffected effected)
+    public int Amount;
+    public CardEffect CardEffect;
+
+    public void Apply(IEffected effected)
     {
-        Debug.LogWarning("Did Nothing");
+        CardEffect.Apply(effected, Amount);
     }
 }

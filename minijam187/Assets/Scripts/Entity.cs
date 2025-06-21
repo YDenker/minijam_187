@@ -1,20 +1,83 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public abstract class Entity : MonoBehaviour, IEffected
+public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IEffected
 {
-    public virtual string Name() { return "Unknown"; }
-    public virtual void GainStatus(object status)
+    protected string entityName;
+    protected int currentHealth;
+    protected int maxHealth;
+
+    // UI References
+    [SerializeField] protected GameObject effects_parent;
+    [SerializeField] protected TMP_Text health_text;
+    [SerializeField] protected Slider health_slider;
+    [SerializeField] protected RawImage sprite;
+
+    // Art
+    protected Sprite entitySprite;
+    protected Sprite entitySpriteHovered;
+
+    // Internal
+    private bool isHovered = false;
+
+    public string Name => entityName;
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
+
+    public void UpdateVisual()
+    {
+        PaintHover();
+        UpdateHealth();
+    }
+    public void UpdateHealth()
+    {
+        health_slider.value = (float)currentHealth / (float)maxHealth;
+        health_text.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+    }
+
+    public bool GainStatus(StatusEffect effect, int amount)
     {
         throw new System.NotImplementedException();
     }
 
-    public virtual void Heal(int value)
+    public int Heal(HealEffect effect, int amount)
     {
-        throw new System.NotImplementedException();
+        int tmp = currentHealth;
+        currentHealth += amount;
+        currentHealth = Mathf.Min(maxHealth, currentHealth);
+        UpdateHealth();
+        return currentHealth - tmp;
     }
 
-    public virtual void TakeDamage(int value, Damage.DamageType type)
+    public int TakeDamage(DamageEffect effect, int amount)
     {
-        throw new System.NotImplementedException();
+        int tmp = currentHealth;
+        currentHealth -= amount;
+        currentHealth = Mathf.Max(0, currentHealth);
+        UpdateHealth();
+        return tmp - currentHealth;
+    }
+
+    public void PaintHover()
+    {
+        sprite.texture = isHovered ? entitySpriteHovered.texture : entitySprite.texture;
+    }
+
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        isHovered = false;
+        PaintHover();
+    }
+
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        isHovered = true;
+        PaintHover();
     }
 }

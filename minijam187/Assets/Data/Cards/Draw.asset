@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
-  m_Name: Test
+  m_Name: Draw
   m_EditorClassIdentifier: 
+  ID: 2
+  isLightSide: 1
   lightSide:
-    cardName: Throw
-    cost: 1
-    effectText: Deal 5 damage
+    cardName: Remember
+    cost: 3
+    effectText: Draw $ cards
     art: {fileID: 0}
     effects:
-    - {fileID: 11400000, guid: d7a468bad0dc521418ae1b1ad466e6f3, type: 2}
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
   darkSide:
-    cardName: Toss
-    cost: 2
-    effectText: Deal 10 damage
+    cardName: Discard
+    cost: 0
+    effectText: Discard this card
     art: {fileID: 0}
-    effects:
-    - {fileID: 11400000, guid: c01b0cf48b43ba04aad98a41c2aed8e2, type: 2}
+    effects: []

@@ -1,6 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
-using static CardData;
-using static UnityEngine.EventSystems.EventTrigger;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -13,13 +14,17 @@ public class GameManager : MonoBehaviour
         PAUSE
     }
 
-    // Prefabs
-    [SerializeField] private GameObject cardPrefab;
+    // Starting
+    public PlayerStats playerStats;
+    public EnemyData[] enemyData;
 
     // UI References
+    [SerializeField] private Player player;
+    [SerializeField] private Enemy[] enemies;
     [SerializeField] private HandFanLayout handFanLayout;
     [SerializeField] private CombatLog combatLog;
 
+    public HandFanLayout Hand => handFanLayout;
     public CombatLog Log => combatLog;
 
     // Card Curve
@@ -27,23 +32,22 @@ public class GameManager : MonoBehaviour
     public LineRenderer lineRenderer;
     public int curveResolution = 20;
 
-    public GameState state = GameState.PAUSE;
+    public GameState state = GameState.PLAYER;
 
     public Card Selected = null;
 
     public bool IsSelected => Selected != null;
 
 
-    public void DrawCard(int amount)
+    public void StartTurn()
     {
-        for (int i = 0; i < amount; i++)
-        {
-            if (handFanLayout.cardsInHand.Count >= handFanLayout.maxHandCapacity)
-                return;
-            GameObject newCard = Instantiate(cardPrefab);
-            Card card = newCard.GetComponent<Card>();
-            if(!handFanLayout.AddCard(card)) Destroy(card.gameObject);
-        }
+        StartCoroutine(handFanLayout.DrawCard(5, () => state = GameState.PLAYER));
+        
+    }
+
+    public void EndTurn()
+    {
+        state = GameState.ENEMY;
     }
 
     public void SelectCard(Card card)
@@ -64,7 +68,13 @@ public class GameManager : MonoBehaviour
 
     public void PlaySelectedCard(Entity target)
     {
-        if (Selected.isLightSide)
+        if (state != GameState.PLAYER)
+        {
+            combatLog.Log("Can only play cards during your turn!");
+            return;
+        }
+        Hand.cardsInHand.Remove(Selected);
+        if (Selected.data.isLightSide)
         {
             foreach (var effect in Selected.data.lightSide.effects)
             {
@@ -78,17 +88,33 @@ public class GameManager : MonoBehaviour
                 effect.Apply(target);
             }
         }
-        StartCoroutine(Selected.FlipCard(() => handFanLayout.RemoveCard(Selected)));
+        handFanLayout.FlipCard(Selected,() => handFanLayout.RemoveCard(Selected));
         lineRenderer.enabled = false;
+        handFanLayout.UnGreyCards();
     }
 
     void Awake()
     {
         Instance = this;
+        state = GameState.PAUSE;
         lineRenderer.startColor = curveColor;
         lineRenderer.endColor = curveColor;
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
+    }
+
+    public void Start()
+    {
+        Hand.CardDeck.Populate(playerStats.DeckData);
+        player.Populate(playerStats);
+        int i = 0;
+        foreach (EnemyData enemy in enemyData)
+        {
+            enemies[i].gameObject.SetActive(true);
+            enemies[i].Populate(enemy);
+            i++;
+        }
+        StartTurn();
     }
 
     public void Update()
@@ -96,15 +122,12 @@ public class GameManager : MonoBehaviour
         // INPUT
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DrawCard(1);
+            handFanLayout.DrawCard(1);
         }
         
         if (IsSelected)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Selected.HandleSelection();
-            }
+            
             Vector3 cardPosition = Selected.transform.position;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
 
@@ -115,7 +138,11 @@ public class GameManager : MonoBehaviour
                 float t = i / (float)(curveResolution - 1);
                 Vector3 bezierPoint = CalculateQuadraticBezierPoint(t, cardPosition, midPoint, mousePosition);
                 lineRenderer.SetPosition(i, bezierPoint);
-            }            
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                Selected.HandleSelection();
+            }
         }
         else
         {

@@ -4,76 +4,22 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Enemy : Entity
 {
-    public EnemyData data;
-
-    // UI References
-    [SerializeField] private GameObject effects_parent;
-    [SerializeField] private TMP_Text health_text;
-    [SerializeField] private Slider health_slider;
-    [SerializeField] private RawImage sprite;
-
-    // Internal
-    private int currentHealth;
-    private bool isHovered = false;
-
-    public override string Name() => data.Name;
-
-    public void Start()
+    public void Populate(EnemyData data)
     {
+        entityName = data.Name;
+        maxHealth = data.maxHealth;
         currentHealth = data.maxHealth;
         sprite.color = Color.white;
+        entitySprite = data.enemySprite;
+        entitySpriteHovered = data.enemyHoveredSprite;
         UpdateVisual();
     }
-    public void UpdateVisual()
-    {
-        PaintHover();
-        UpdateHealth();
-    }
-    public void UpdateHealth()
-    {
-        health_slider.value = ToFloat(currentHealth) / ToFloat(data.maxHealth);
-        health_text.text = currentHealth.ToString()+"/"+ data.maxHealth.ToString();
-    }
 
-    public void PaintHover()
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        sprite.texture = isHovered ? data.enemyHoveredSprite.texture : data.enemySprite.texture;
-    }
-
-    public override void TakeDamage(int value, Damage.DamageType type)
-    {
-        currentHealth -= value;
-        UpdateHealth();
-    }
-
-    public override void Heal(int value)
-    {
-        currentHealth += value;
-        UpdateHealth();
-    }
-
-    private float ToFloat(int value)
-    {
-        float result = value;
-        return result;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isHovered = false;
-        PaintHover();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isHovered = true;
-        PaintHover();
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
+        base.OnPointerClick(eventData);
         if (GameManager.Instance.IsSelected)
         {
             GameManager.Instance.PlaySelectedCard(this);
@@ -82,10 +28,5 @@ public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointer
         {
 
         }
-    }
-
-    public override void GainStatus(object status)
-    {
-        throw new NotImplementedException();
     }
 }
