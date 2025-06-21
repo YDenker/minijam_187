@@ -2,20 +2,28 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private static Color32 NotHover = Color.grey;
-    private static Color32 Hover = Color.yellow;
 
     // UI References
     [SerializeField] private TMP_Text cost_text;
     [SerializeField] private TMP_Text name_text;
     [SerializeField] private TMP_Text effect_text;
     [SerializeField] private RawImage image;
-    [SerializeField] private RawImage hower;
+    [SerializeField] private RawImage background;
+
+    // Art
+    [SerializeField] private Sprite light_background;
+    [SerializeField] private Sprite dark_background;
+    [SerializeField] private Sprite light_background_highlight;
+    [SerializeField] private Sprite dark_background_highlight;
 
     public CardData data;
+
+    public RectTransform RectTransform;
 
     // Internal
     private bool isHovered = false;
@@ -24,30 +32,22 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void Start()
     {
+        RectTransform = GetComponent<RectTransform>();
         UpdateVisual();
     }
 
-    public void PlayCard()
-    {
-        if (isLightSide)
-        {
-            Debug.Log("Playing light side: " + data.lightSide.effectText);
-        }
-        else
-        {
-            Debug.Log("Playing dark side: " + data.darkSide.effectText);
-        }
-    }
-
-    public void FlipCard()
+    public IEnumerator FlipCard(Action callback)
     {
         isLightSide = !isLightSide;
         UpdateVisual();
+        // DO THE ACTION FLIP ANIMATION HERE
+        yield return new WaitForSeconds(2f);
+        callback?.Invoke();
     }
 
     public void UpdateVisual()
     {
-        name_text.text = data.cardName;
+        name_text.text = isLightSide ? data.lightSide.cardName : data.darkSide.cardName;
         cost_text.text = isLightSide ? data.lightSide.cost.ToString() : data.darkSide.cost.ToString();
         effect_text.text = isLightSide ? data.lightSide.effectText : data.darkSide.effectText;
         PaintHover();
@@ -73,10 +73,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void PaintHover()
     {
-        hower.color = isHovered ? Hover : NotHover;
+        background.texture = isLightSide ? (isHovered ? light_background_highlight.texture : light_background.texture) : (isHovered ? dark_background_highlight.texture : dark_background.texture);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void HandleSelection()
     {
         if (GameManager.Instance.IsSelected && !isSelected) return;
         isSelected = !isSelected;
@@ -84,12 +84,18 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if (isSelected)
         {
             transform.localScale = Vector3.one * 1.2f;
-            GameManager.Instance.Selected = this;
+            GameManager.Instance.SelectCard(this);
         }
         else
         {
-            GameManager.Instance.Selected = null;
+            GameManager.Instance.UnselectCard(this);
             transform.localScale = Vector3.one;
         }
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        HandleSelection();
+    }
+
 }

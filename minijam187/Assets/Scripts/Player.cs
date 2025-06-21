@@ -2,11 +2,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
 
-public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Player : Entity, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public EnemyData data;
+    public int maxHealth = 100;
+    public int ressource = 4;
+    public Sprite playerSprite;
+    public Sprite playerSpriteHovered;
 
     // UI References
     [SerializeField] private GameObject effects_parent;
@@ -15,31 +17,34 @@ public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointer
     [SerializeField] private RawImage sprite;
 
     // Internal
-    private int currentHealth;
+    private int currentHealth = 100;
     private bool isHovered = false;
-
-    public override string Name() => data.Name;
 
     public void Start()
     {
-        currentHealth = data.maxHealth;
+        currentHealth = maxHealth;
         sprite.color = Color.white;
         UpdateVisual();
     }
+
     public void UpdateVisual()
     {
-        PaintHover();
         UpdateHealth();
     }
     public void UpdateHealth()
     {
-        health_slider.value = ToFloat(currentHealth) / ToFloat(data.maxHealth);
-        health_text.text = currentHealth.ToString()+"/"+ data.maxHealth.ToString();
+        health_slider.value = ToFloat(currentHealth) / ToFloat(maxHealth);
+        health_text.text = currentHealth.ToString() + "/" + maxHealth.ToString();
     }
 
     public void PaintHover()
     {
-        sprite.texture = isHovered ? data.enemyHoveredSprite.texture : data.enemySprite.texture;
+        sprite.texture = isHovered ? playerSpriteHovered.texture : playerSprite.texture;
+    }
+
+    public override string Name()
+    {
+        return "Mona";
     }
 
     public override void TakeDamage(int value, Damage.DamageType type)
@@ -60,15 +65,15 @@ public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointer
         return result;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isHovered = false;
-        PaintHover();
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         isHovered = true;
+        PaintHover();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isHovered = false;
         PaintHover();
     }
 
@@ -86,6 +91,6 @@ public class Enemy : Entity, IPointerEnterHandler, IPointerExitHandler, IPointer
 
     public override void GainStatus(object status)
     {
-        throw new NotImplementedException();
+        throw new System.NotImplementedException();
     }
 }

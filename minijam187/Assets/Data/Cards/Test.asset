@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  cardName: Test
   lightSide:
-    cost: 0
-    effectText: Does Nothing
+    cardName: Throw
+    cost: 1
+    effectText: Deal 5 damage
     art: {fileID: 0}
+    effects:
+    - {fileID: 11400000, guid: d7a468bad0dc521418ae1b1ad466e6f3, type: 2}
   darkSide:
+    cardName: Toss
     cost: 2
-    effectText: Does Nothing but dark
+    effectText: Deal 10 damage
     art: {fileID: 0}
+    effects:
+    - {fileID: 11400000, guid: c01b0cf48b43ba04aad98a41c2aed8e2, type: 2}

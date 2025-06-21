@@ -5,18 +5,18 @@ public class CardData : ScriptableObject
 {
     // STATS
     [Space]
-    public string cardName;
     public LightSide lightSide;
     public DarkSide darkSide;
 
     [System.Serializable]
     public class LightSide
     {
+        public string cardName;
         public int cost;
         public string effectText;
         public Sprite art;
         // EFFECT
-        // TODO
+        public Effect[] effects;
         public LightSide(int cost, string effectText)
         {
             this.cost = cost;
@@ -26,11 +26,12 @@ public class CardData : ScriptableObject
     [System.Serializable]
     public class DarkSide
     {
+        public string cardName;
         public int cost;
         public string effectText;
         public Sprite art;
         // EFFECT
-        // TODO
+        public Effect[] effects;
         public DarkSide(int cost, string effectText)
         {
             this.cost = cost;

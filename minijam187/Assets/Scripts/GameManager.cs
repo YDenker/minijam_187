@@ -1,4 +1,6 @@
 using UnityEngine;
+using static CardData;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     // UI References
     [SerializeField] private HandFanLayout handFanLayout;
+    [SerializeField] private CombatLog combatLog;
+
+    public CombatLog Log => combatLog;
 
     // Card Curve
     public Color32 curveColor;
@@ -29,11 +34,52 @@ public class GameManager : MonoBehaviour
     public bool IsSelected => Selected != null;
 
 
-    public void DrawCard()
+    public void DrawCard(int amount)
     {
-        GameObject newCard = Instantiate(cardPrefab);
-        RectTransform cardRT = newCard.GetComponent<RectTransform>();
-        handFanLayout.AddCard(cardRT);
+        for (int i = 0; i < amount; i++)
+        {
+            if (handFanLayout.cardsInHand.Count >= handFanLayout.maxHandCapacity)
+                return;
+            GameObject newCard = Instantiate(cardPrefab);
+            Card card = newCard.GetComponent<Card>();
+            if(!handFanLayout.AddCard(card)) Destroy(card.gameObject);
+        }
+    }
+
+    public void SelectCard(Card card)
+    {
+        Selected = card;
+        handFanLayout.SelectCard(card);
+        lineRenderer.enabled = true;
+    }
+
+    public void UnselectCard(Card card)
+    {
+        if (card != Selected)
+            Debug.LogError("THIS SHOULD NOT BE HAPPENING!");
+        lineRenderer.enabled = false;
+        handFanLayout.UnselectCard(card);
+        Selected = null;
+    }
+
+    public void PlaySelectedCard(Entity target)
+    {
+        if (Selected.isLightSide)
+        {
+            foreach (var effect in Selected.data.lightSide.effects)
+            {
+                effect.Apply(target);
+            }
+        }
+        else
+        {
+            foreach (var effect in Selected.data.darkSide.effects)
+            {
+                effect.Apply(target);
+            }
+        }
+        StartCoroutine(Selected.FlipCard(() => handFanLayout.RemoveCard(Selected)));
+        lineRenderer.enabled = false;
     }
 
     void Awake()
@@ -50,13 +96,15 @@ public class GameManager : MonoBehaviour
         // INPUT
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DrawCard();
+            DrawCard(1);
         }
-
-
+        
         if (IsSelected)
         {
-
+            if (Input.GetMouseButtonDown(1))
+            {
+                Selected.HandleSelection();
+            }
             Vector3 cardPosition = Selected.transform.position;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
 
@@ -67,13 +115,11 @@ public class GameManager : MonoBehaviour
                 float t = i / (float)(curveResolution - 1);
                 Vector3 bezierPoint = CalculateQuadraticBezierPoint(t, cardPosition, midPoint, mousePosition);
                 lineRenderer.SetPosition(i, bezierPoint);
-            }
-            
-            lineRenderer.enabled = true;
+            }            
         }
         else
         {
-            lineRenderer.enabled = false;
+            
         }
     }
 
