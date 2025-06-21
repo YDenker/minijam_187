@@ -7,6 +7,15 @@ public class CombatLog : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
     [SerializeField] private GameObject logPrefab;
+    [SerializeField] private GameObject turnLogPrefab;
+
+    public void LogTurnSwitch(string side, int turn)
+    {
+        GameObject newEntry = Instantiate(turnLogPrefab, content);
+        LogEntry logEntry = newEntry.GetComponent<LogEntry>();
+        logEntry.SetText(side + ": "+ turn.ToString());
+        StartCoroutine(ScrollToBottom());
+    }
 
     public void Log(string message)
     {

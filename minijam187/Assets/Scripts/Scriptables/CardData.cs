@@ -58,9 +58,12 @@ public class CardData : ScriptableObject
         {
             get
             {
-                if (effects.Length > 0)
-                    return effectText.Replace("$", effects[0].Amount.ToString());
-                return effectText;
+                string tmp = effectText;
+                for (int i = 1; i <= effects.Length; i++)
+                {
+                    tmp = tmp.Replace("$" + i.ToString(), effects[i - 1].Amount.ToString());
+                }
+                return tmp;
             }
         }
         public LightSide(int cost, string effectText)
@@ -83,9 +86,12 @@ public class CardData : ScriptableObject
         {
             get
             {
-                if (effects.Length > 0)
-                    return effectText.Replace("$", effects[0].Amount.ToString());
-                return effectText;
+                string tmp = effectText;
+                for (int i = 1; i <= effects.Length; i++)
+                {
+                    tmp = tmp.Replace("$" + i.ToString(), effects[i-1].Amount.ToString());
+                }
+                return tmp;
             }
         }
         public DarkSide(int cost, string effectText)

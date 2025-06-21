@@ -51,6 +51,7 @@ public class Deck : MonoBehaviour
         {
             DrawPile.Add(card);
         }
+        DiscardPile.Clear();
         DrawCounts();
         Shuffle();
     }

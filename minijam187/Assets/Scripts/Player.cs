@@ -19,6 +19,8 @@ public class Player : Entity
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
         if (GameManager.Instance.IsSelected)
         {
             GameManager.Instance.PlaySelectedCard(this);

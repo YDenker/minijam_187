@@ -17,3 +17,12 @@ MonoBehaviour:
   enemyHoveredSprite: {fileID: 21300000, guid: 8d3fced0bad996f47ae4dc370d836309, type: 3}
   maxHealth: 100
   damage: 15
+  possibleTurns:
+  - minAmount: 2
+    maxAmount: 7
+    effect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
+    target: 1
+  - minAmount: 1
+    maxAmount: 3
+    effect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
+    target: 0

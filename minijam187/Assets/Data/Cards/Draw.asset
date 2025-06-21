@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Remember
     cost: 3
-    effectText: Draw $ cards
+    effectText: Draw $1 cards
     art: {fileID: 0}
     effects:
     - Amount: 2

@@ -6,6 +6,9 @@ public class HealEffect : CardEffect
     public override void Apply(IEffected effected, int amount)
     {
         int actual = effected.Heal(this, amount);
-        GameManager.Instance.Log.Log("Heal "+ effected.Name + " for <b>" + actual +"</b> health.");
+        if (actual != amount)
+            GameManager.Instance.Log.Log("Heal "+ effected.Name + " for <color=green><b>" + actual +"</b>("+amount+")</color> health.");
+        else
+            GameManager.Instance.Log.Log("Heal " + effected.Name + " for <color=green><b>" + amount + "</b></color> health.");
     }
 }

@@ -8,7 +8,10 @@ public class DamageEffect : CardEffect
     public override void Apply(IEffected effected, int amount)
     {
         int actual = effected.TakeDamage(this, amount);
-        GameManager.Instance.Log.Log("Deal <b>" + actual + " "+Type.ToColoredString() + "</b> damage to " + effected.Name);
+        if (actual != amount)
+            GameManager.Instance.Log.Log("Deal <b>" + actual + "</b>("+amount+") <b>"+Type.ToColoredString() + "</b> damage to " + effected.Name);
+        else
+            GameManager.Instance.Log.Log("Deal <b>" + amount + " " + Type.ToColoredString() + "</b> damage to " + effected.Name);
     }
 }
 public enum DamageType { LIGHT, DARK, PHYSICAL }

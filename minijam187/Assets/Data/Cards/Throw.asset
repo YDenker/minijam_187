@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Throw
     cost: 1
-    effectText: Deal 5 damage
+    effectText: Deal $1 damage
     art: {fileID: 0}
     effects:
     - Amount: 5
@@ -25,7 +25,7 @@ MonoBehaviour:
   darkSide:
     cardName: Toss
     cost: 3
-    effectText: Deal 10 damage
+    effectText: Deal $1 damage
     art: {fileID: 0}
     effects:
     - Amount: 10

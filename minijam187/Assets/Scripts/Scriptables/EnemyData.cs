@@ -8,4 +8,5 @@ public class EnemyData : ScriptableObject
     public Sprite enemyHoveredSprite;
     public int maxHealth;
     public int damage;
+    public EnemyTurn[] possibleTurns;
 }

@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Enemy[] enemies;
     [SerializeField] private HandFanLayout handFanLayout;
     [SerializeField] private CombatLog combatLog;
+    [SerializeField] private Button endTurnButton;
 
     public HandFanLayout Hand => handFanLayout;
     public CombatLog Log => combatLog;
@@ -35,19 +35,66 @@ public class GameManager : MonoBehaviour
     public GameState state = GameState.PLAYER;
 
     public Card Selected = null;
+    public Player Player => player;
 
     public bool IsSelected => Selected != null;
 
+    // Internal
+    private Enemy[] activeEnemies;
+    private int playerturn = 0;
+    private int enemyturn = 0;
+
+
+    public void StartGame()
+    {
+        StartCoroutine(handFanLayout.DrawCard(3, () => SwitchState(GameState.PLAYER)));
+    }
 
     public void StartTurn()
     {
-        StartCoroutine(handFanLayout.DrawCard(5, () => state = GameState.PLAYER));
-        
+        foreach (Enemy enemy in activeEnemies)
+        {
+            enemy.SelectTurn();
+        }
+        handFanLayout.DrawCard(2);
     }
 
     public void EndTurn()
     {
-        state = GameState.ENEMY;
+        SwitchState(GameState.ENEMY);
+    }
+
+    public void DoEnemyTurn()
+    {
+        foreach (Enemy enemy in activeEnemies)
+        {
+            enemy.DoTurn();
+        }
+        SwitchState(GameState.PLAYER);
+    }
+
+    public void SwitchState(GameState state)
+    {
+        this.state = state;
+        switch (state)
+        {
+            case GameState.PLAYER:
+                playerturn++;
+                Log.LogTurnSwitch(state.ToString(), playerturn);
+                StartTurn();
+                endTurnButton.interactable = true;
+                break;
+            case GameState.ENEMY:
+                enemyturn++;
+                Log.LogTurnSwitch(state.ToString(), enemyturn);
+                endTurnButton.interactable = false;
+                DoEnemyTurn();
+                break;
+            case GameState.PAUSE:
+            default:
+                endTurnButton.interactable = false;
+                break;
+        }
     }
 
     public void SelectCard(Card card)
@@ -93,10 +140,22 @@ public class GameManager : MonoBehaviour
         handFanLayout.UnGreyCards();
     }
 
-    void Awake()
+    public void Awake()
     {
         Instance = this;
-        state = GameState.PAUSE;
+        Hand.CardDeck.Populate(playerStats.DeckData);
+        player.Populate(playerStats);
+        activeEnemies = new Enemy[enemyData.Length];
+        int i = 0;
+        foreach (EnemyData enemy in enemyData)
+        {
+            activeEnemies[i] = enemies[i];
+            activeEnemies[i].gameObject.SetActive(true);
+            activeEnemies[i].Populate(enemy);
+            i++;
+        }
+        SwitchState(GameState.PAUSE);
+        endTurnButton.onClick.AddListener(() => SwitchState(GameState.ENEMY));
         lineRenderer.startColor = curveColor;
         lineRenderer.endColor = curveColor;
         lineRenderer.startWidth = 0.1f;
@@ -105,16 +164,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        Hand.CardDeck.Populate(playerStats.DeckData);
-        player.Populate(playerStats);
-        int i = 0;
-        foreach (EnemyData enemy in enemyData)
-        {
-            enemies[i].gameObject.SetActive(true);
-            enemies[i].Populate(enemy);
-            i++;
-        }
-        StartTurn();
+        StartGame();
     }
 
     public void Update()
