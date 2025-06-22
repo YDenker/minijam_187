@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DarkCardBack-export_0: 5139809554472929321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
