@@ -7,7 +7,7 @@ public class DiscardEffect : CardEffect
 
     public override void Apply(IEffected origin, IEffected effected, int amount, bool fromCard)
     {
-        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => DiscardCard(origin, effected, amount), (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), () => DiscardCard(origin, effected, amount), null, (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
     }
 
     private void DiscardCard(IEffected origin, IEffected effected, int amount)

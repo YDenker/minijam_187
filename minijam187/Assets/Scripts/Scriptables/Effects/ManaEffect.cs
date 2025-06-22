@@ -11,6 +11,6 @@ public class ManaEffect : CardEffect
     private void GainMana(IEffected origin, IEffected effected, int amount)
     {
         GameManager.Instance.Player.GainMana(amount);
-        GameManager.Instance.Log.Log(origin.Name + " gained <b>" + amount + "</b> " + "Mana.");
+        GameManager.Instance.Log.Log(origin.Name + " gained <b>" + amount + "</b> " + " mana.");
     }
 }

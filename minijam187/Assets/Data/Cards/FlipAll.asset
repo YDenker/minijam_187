@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Are You Serious
     cost: 10
-    sourceImpact: 0
+    sourceImpact: -10
     effectText: Flip all cards in hand.
     art: {fileID: 0}
     effects:
@@ -26,6 +26,7 @@ MonoBehaviour:
   darkSide:
     cardName: Redraw
     cost: 0
+    sourceImpact: 3
     effectText: Draw $1 cards.
     art: {fileID: 0}
     effects:

@@ -169,7 +169,7 @@ public class HandFanLayout : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 break;
             }
 
-            GameObject newCard = Instantiate(cardPrefab, CardDeck.PilePosition, Quaternion.Euler(0,0,90));
+            GameObject newCard = Instantiate(cardPrefab, CardDeck.PilePosition, Quaternion.Euler(0,0,10));
             Card card = newCard.GetComponent<Card>();
             card.Populate(data);
             if (!AddCard(card)) Destroy(card.gameObject);

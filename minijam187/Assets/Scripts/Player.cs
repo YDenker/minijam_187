@@ -37,6 +37,15 @@ public class Player : Entity
         return true;
     }
 
+    public int ForceSubtractMana(int amount)
+    {
+        int tmp = mana;
+        mana -= amount;
+        mana = Mathf.Max(0, mana);
+        UpdateMana();
+        return tmp - mana;
+    }
+
     public void GainMana(int amount)
     {
         mana += amount;
@@ -73,7 +82,8 @@ public class Player : Entity
 
     private void UpdateSource()
     {
-        float value = (((float)source + (float)maxSource) / ((float)maxSource * 2f)) - (float)maxSource;
+        float t = Mathf.InverseLerp(-maxSource, maxSource, source);
+        float value = t * 2f - 1f;
         source_slider.value = value;
         if (value > 0.5)
             source_handle.sprite = moreYang;

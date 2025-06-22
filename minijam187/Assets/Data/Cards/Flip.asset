@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: FlipL
     cost: 2
-    sourceImpact: 0
+    sourceImpact: -1
     effectText: Flip the $1 leftmost cards in hand.
     art: {fileID: 0}
     effects:
@@ -26,6 +26,7 @@ MonoBehaviour:
   darkSide:
     cardName: FlipR
     cost: 2
+    sourceImpact: 1
     effectText: Flip the $1 rightmost cards in hand.
     art: {fileID: 0}
     effects:

@@ -2,12 +2,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static CardData;
+using UnityEngine.UI;
 public class Deck : MonoBehaviour
 {
     // UI References
     [SerializeField] private TMP_Text drawpile_count;
     [SerializeField] private TMP_Text exilepile_count;
     [SerializeField] private TMP_Text discardpile_count;
+    [SerializeField] private Image discardpile_image;
+
+    // Art
+    [SerializeField] private Sprite discardpile_light;
+    [SerializeField] private Sprite discardpile_dark;
 
     public Vector3 PilePosition => ((RectTransform)transform).anchoredPosition;
 
@@ -59,6 +65,7 @@ public class Deck : MonoBehaviour
     public void DiscardCard(CardRuntimeData card)
     {
         DiscardPile.Add(card);
+        discardpile_image.sprite = card.isLightSide ? discardpile_light : discardpile_dark;
         DrawCounts();
     }
 

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
+  m_Name: MoonlightFlash_CrimsonSlash
+  m_EditorClassIdentifier: 
+  ID: 9
+  isLightSide: 1
+  lightSide:
+    cardName: Moonlight Flash
+    cost: 1
+    sourceImpact: 0
+    effectText: Deal $1 damage, then heal self for $2 and draw $3
+    art: {fileID: 0}
+    effects:
+    - Amount: 4
+      CardEffect: {fileID: 11400000, guid: 19214b8b851fdfa42b9dc9e8411e8e89, type: 2}
+    - Amount: 4
+      CardEffect: {fileID: 11400000, guid: e680c47b5d7d5da429d440908ffe41b3, type: 2}
+    - Amount: 1
+      CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
+  darkSide:
+    cardName: Crimson Slash
+    cost: 1
+    sourceImpact: 0
+    effectText: Deal $1 damage, then $2 to self.
+    art: {fileID: 0}
+    effects:
+    - Amount: 10
+      CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 957cfcda07ff5804fbca2a111342d165, type: 2}
