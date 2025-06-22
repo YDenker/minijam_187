@@ -13,14 +13,22 @@ public class DamageEffect : CardEffect
 
     private void LooseHealth(IEffected origin, IEffected effected, int amount)
     {
-        int actual = effected.TakeDamage(this, amount);
-        if (actual != amount)
-            GameManager.Instance.Log.Log(origin.Name + " deals <b>" + actual + "</b>(" + amount + ") <b>" + Type.ToColoredString() + "</b> damage to " + effected.Name + ".");
+        if (Type == DamageType.SELF)
+        {
+            int actual = origin.TakeDamage(this, amount);
+            GameManager.Instance.Log.Log(origin.Name + " took <b>" + actual + "</b> damage.");
+        }
         else
-            GameManager.Instance.Log.Log(origin.Name + " deals <b>" + amount + " " + Type.ToColoredString() + "</b> damage to " + effected.Name + ".");
+        {
+            int actual = effected.TakeDamage(this, amount);
+            if (actual != amount)
+                GameManager.Instance.Log.Log(origin.Name + " deals <b>" + actual + "</b>(" + amount + ") <b>" + Type.ToColoredString() + "</b> damage to " + effected.Name + ".");
+            else
+                GameManager.Instance.Log.Log(origin.Name + " deals <b>" + amount + " " + Type.ToColoredString() + "</b> damage to " + effected.Name + ".");
+        }
     }
 }
-public enum DamageType { LIGHT, DARK, PHYSICAL }
+public enum DamageType { LIGHT, DARK, SELF, PHYSICAL }
 
 public static class DamageEffectTypeExtensions
 {

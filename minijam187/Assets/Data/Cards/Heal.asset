@@ -17,6 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Recover
     cost: 2
+    sourceImpact: -4
     effectText: Heal a target for $1.
     art: {fileID: 0}
     effects:
@@ -25,6 +26,7 @@ MonoBehaviour:
   darkSide:
     cardName: Hurt
     cost: 2
+    sourceImpact: 4
     effectText: Damage a target for $1.
     art: {fileID: 0}
     effects:

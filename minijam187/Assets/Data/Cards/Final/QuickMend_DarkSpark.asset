@@ -10,27 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
-  m_Name: Dark Ritual
+  m_Name: QuickMend_DarkSpark
   m_EditorClassIdentifier: 
-  ID: 0
-  isLightSide: 0
+  ID: 2
+  isLightSide: 1
   lightSide:
-    cardName: 
-    cost: 0
-    effectText: 
+    cardName: Quick Mend
+    cost: 1
+    sourceImpact: 0
+    effectText: Heal $1 for the next 2 rounds.
     art: {fileID: 0}
     effects: []
   darkSide:
-    cardName: Dark Ritual
-    cost: 0
-    effectText: Discard $2 Card gain 2 Mana
+    cardName: Dark Spark
+    cost: 1
+    sourceImpact: 0
+    effectText: Deal $1 damage.
     art: {fileID: 0}
     effects:
-    - Amount: 0
-      CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
-    - Amount: 0
-      CardEffect: {fileID: 0}
-    - Amount: 0
-      CardEffect: {fileID: 0}
-    - Amount: 0
-      CardEffect: {fileID: 0}
+    - Amount: 5
+      CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}

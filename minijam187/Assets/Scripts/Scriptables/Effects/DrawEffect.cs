@@ -5,7 +5,7 @@ public class DrawEffect : CardEffect
 {
     public override void Apply(IEffected origin, IEffected effected, int amount, bool fromCard)
     {
-        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => DrawCards(origin, effected, amount), (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), () => DrawCards(origin, effected, amount), null, (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
     }
 
     private void DrawCards(IEffected origin, IEffected effected, int amount)

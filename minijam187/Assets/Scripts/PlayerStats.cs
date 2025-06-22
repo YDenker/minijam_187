@@ -9,5 +9,7 @@ public class PlayerStats
     public Sprite PlayerHoveredSprite;
     public int MaxHealth;
     public int CurrentHealth;
+    public int maxMana;
+    public int maxSource;
     public DeckData DeckData;
 }

@@ -17,6 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Remember
     cost: 3
+    sourceImpact: -3
     effectText: Draw $1 cards
     art: {fileID: 0}
     effects:
@@ -25,6 +26,9 @@ MonoBehaviour:
   darkSide:
     cardName: Discard
     cost: 0
+    sourceImpact: 3
     effectText: Discard this card
     art: {fileID: 0}
-    effects: []
+    effects:
+    - Amount: 0
+      CardEffect: {fileID: 0}

@@ -13,7 +13,7 @@ public class CombatLog : MonoBehaviour
     {
         GameObject newEntry = Instantiate(turnLogPrefab, content);
         LogEntry logEntry = newEntry.GetComponent<LogEntry>();
-        logEntry.SetText(side + ": "+ turn.ToString());
+        logEntry.SetText(side + " TURN "+ turn.ToString());
         StartCoroutine(ScrollToBottom());
     }
 

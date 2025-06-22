@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
+  m_Name: SoothingTouch_MindFlay
+  m_EditorClassIdentifier: 
+  ID: 1
+  isLightSide: 1
+  lightSide:
+    cardName: Soothing Touch
+    cost: 2
+    sourceImpact: 0
+    effectText: Heal for $1.
+    art: {fileID: 0}
+    effects:
+    - Amount: 4
+      CardEffect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
+  darkSide:
+    cardName: Mind Flay
+    cost: 2
+    sourceImpact: 0
+    effectText: Deal $1 damage this round and $2 next round.
+    art: {fileID: 0}
+    effects:
+    - Amount: 1
+      CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
