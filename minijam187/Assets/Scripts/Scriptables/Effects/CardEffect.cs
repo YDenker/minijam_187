@@ -2,5 +2,6 @@ using UnityEngine;
 
 public abstract class CardEffect : ScriptableObject
 {
-    public abstract void Apply(IEffected effected, int amount);
+    public SpellAnimation spellAnimation;
+    public abstract void Apply(IEffected origin, IEffected effected, int amount);
 }

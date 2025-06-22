@@ -51,11 +51,11 @@ public class Enemy : Entity
         switch (current.target)
         {
             case EnemyTurn.Target.SELF:
-                current.Apply(this);
+                current.Apply(this,this);
                 break;
             case EnemyTurn.Target.PLAYER:
             default:
-                current.Apply(GameManager.Instance.Player);
+                current.Apply(this,GameManager.Instance.Player);
                 break;
         }
     }

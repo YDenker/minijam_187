@@ -6,8 +6,8 @@ public class Effect
     public int Amount;
     public CardEffect CardEffect;
 
-    public void Apply(IEffected effected)
+    public void Apply(IEffected origin, IEffected effected)
     {
-        CardEffect.Apply(effected, Amount);
+        CardEffect.Apply(origin, effected, Amount);
     }
 }

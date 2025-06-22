@@ -15,6 +15,9 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] protected Slider health_slider;
     [SerializeField] protected RawImage sprite;
 
+    public Vector2 AnimationOrigin;
+    public Vector2 AnimationTarget;
+
     // Art
     protected Sprite entitySprite;
     protected Sprite entitySpriteHovered;
@@ -79,5 +82,18 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         isHovered = true;
         PaintHover();
+    }
+
+    public Vector2 GetEffectOrigin()
+    {
+        Vector2 origin = IEffected.GetPositionInLayer((RectTransform)transform, GameManager.Instance.AnimationLayer);
+
+        return (origin + AnimationOrigin);
+    }
+
+    public Vector2 GetEffectTarget()
+    {
+        Vector2 origin = IEffected.GetPositionInLayer((RectTransform)transform, GameManager.Instance.AnimationLayer);
+        return (origin + AnimationTarget);
     }
 }
