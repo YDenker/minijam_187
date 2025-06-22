@@ -4,9 +4,9 @@ using static UnityEngine.UI.Image;
 [CreateAssetMenu(fileName = "Heal", menuName = "Scriptable Objects/Effect/Heal")]
 public class HealEffect : CardEffect
 {
-    public override void Apply(IEffected origin, IEffected effected, int amount)
+    public override void Apply(IEffected origin, IEffected effected, int amount, bool fromCard)
     {
-        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => GainHealth(origin, effected, amount), GameManager.Instance.EndPlaySelectedCard));
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => GainHealth(origin, effected, amount), (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
     }
     private void GainHealth(IEffected origin, IEffected effected, int amount)
     {

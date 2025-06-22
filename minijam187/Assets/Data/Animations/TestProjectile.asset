@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 7906683831253233352, guid: bbc8e7ef9cf3e9d479d26b94bbb2769f, type: 3}
-  duration: 4
+  duration: 0.5
   projectiles:
   - {fileID: 21300000, guid: 6a94f1f14a9554646b01d64c30a3e41a, type: 3}
   - {fileID: 21300000, guid: b7a4665789505ad4abe49877858dd4af, type: 3}

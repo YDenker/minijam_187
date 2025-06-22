@@ -12,6 +12,6 @@ public class EnemyTurn
     public void Apply(IEffected origin, IEffected target)
     {
         int amount = UnityEngine.Random.Range(minAmount, maxAmount);
-        effect.Apply(origin, target, amount);
+        effect.Apply(origin, target, amount, false);
     }
 }

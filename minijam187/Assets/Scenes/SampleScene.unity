@@ -2605,6 +2605,7 @@ MonoBehaviour:
     DeckData: {fileID: 11400000, guid: c445c364312c381489590320afd3fd24, type: 2}
   enemyData:
   - {fileID: 11400000, guid: 38aa51f6e17efd54bb9560fb798bc095, type: 2}
+  - {fileID: 11400000, guid: da3969e6cd7aacf44aadfea6666875e3, type: 2}
   player: {fileID: 271669138}
   enemies:
   - {fileID: 973826430}

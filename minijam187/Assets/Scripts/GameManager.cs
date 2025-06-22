@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     private int playerturn = 0;
     private int enemyturn = 0;
 
+    private int enemyFinishedCount = 0;
 
     public void StartGame()
     {
@@ -69,11 +70,17 @@ public class GameManager : MonoBehaviour
 
     public void DoEnemyTurn()
     {
-        foreach (Enemy enemy in activeEnemies)
+        
+        if (enemyFinishedCount >= activeEnemies.Length)
         {
-            enemy.DoTurn();
+            enemyFinishedCount = 0;
+            SwitchState(GameState.PLAYER);
         }
-        SwitchState(GameState.PLAYER);
+        else
+        {
+            activeEnemies[enemyFinishedCount].DoTurn();
+            enemyFinishedCount += 1;
+        }
     }
 
     public void SwitchState(GameState state)
