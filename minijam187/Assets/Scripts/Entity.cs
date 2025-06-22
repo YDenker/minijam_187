@@ -29,7 +29,7 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
-    public void UpdateVisual()
+    public virtual void UpdateVisual()
     {
         PaintHover();
         UpdateHealth();

@@ -49,6 +49,35 @@ public class HandFanLayout : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         StartCoroutine(flipper.FlipCoroutine(card.RectTransform, card.FlipCard, endCallback));
     }
 
+    public Card[] GetLeftMostCards(int amount)
+    {
+        if (amount >= cardsInHand.Count)
+            amount = cardsInHand.Count;
+        Card[] cards = new Card[amount];
+        for (int i = 0; i < cards.Length; i++)
+        {
+            cards[i] = cardsInHand[i];
+        }
+        return cards;
+    }
+
+    public Card[] GetRightMostCards(int amount)
+    {
+        if (amount >= cardsInHand.Count)
+            amount = cardsInHand.Count;
+        Card[] cards = new Card[amount];
+        for (int i = cardsInHand.Count-1, j = 0; j < amount; i--, j++)
+        {
+            cards[j] = cardsInHand[i];
+        }
+        return cards;
+    }
+
+    public Card[] GetAllCards()
+    {
+        return cardsInHand.ToArray();
+    }
+
     public void UpdateHandLayout()
     {
         int count = cardsInHand.Count;

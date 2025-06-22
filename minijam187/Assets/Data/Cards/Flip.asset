@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f98bc19e4ff0b498a71053726481b2, type: 3}
+  m_Name: Flip
+  m_EditorClassIdentifier: 
+  ID: 69
+  isLightSide: 1
+  lightSide:
+    cardName: FlipL
+    cost: 2
+    sourceImpact: 0
+    effectText: Flip the $1 leftmost cards in hand.
+    art: {fileID: 0}
+    effects:
+    - Amount: 3
+      CardEffect: {fileID: 11400000, guid: f3ecd3e62bff8664ca67d017a1bbf5e8, type: 2}
+  darkSide:
+    cardName: FlipR
+    cost: 2
+    effectText: Flip the $1 rightmost cards in hand.
+    art: {fileID: 0}
+    effects:
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 5faa9678305039b4a8b736577ce1e0e9, type: 2}

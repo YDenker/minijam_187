@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4436703f7cabd2d48a16da748393113d, type: 3}
+  m_Name: TurnTest
+  m_EditorClassIdentifier: 
+  Cards:
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 9ce8ca8fa862a964aa70e818ae3e6b93, type: 2}
+  - {fileID: 11400000, guid: 0e28e2c82c3b3964f84e575af076446f, type: 2}
+  - {fileID: 11400000, guid: 0e28e2c82c3b3964f84e575af076446f, type: 2}
+  - {fileID: 11400000, guid: d3e67157cc6cf2f418b0d457ad3c540a, type: 2}
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 959d31246e8f96644bf5983d98e1f46a, type: 2}
+  - {fileID: 11400000, guid: 9ce8ca8fa862a964aa70e818ae3e6b93, type: 2}
+  - {fileID: 11400000, guid: 9ce8ca8fa862a964aa70e818ae3e6b93, type: 2}
+  - {fileID: 11400000, guid: 9ce8ca8fa862a964aa70e818ae3e6b93, type: 2}

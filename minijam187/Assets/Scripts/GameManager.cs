@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             enemy.SelectTurn();
         }
         handFanLayout.DrawCard(2);
+        Player.SetMana(Player.MaxMana);
     }
 
     public void EndTurn()
@@ -132,10 +133,20 @@ public class GameManager : MonoBehaviour
         }
         if (animInProgress)
             return;
+
+        bool isLight = Selected.data.isLightSide;
+        int cost = isLight ? Selected.data.lightSide.cost : Selected.data.darkSide.cost;
+
+        if (Player.TrySubtractMana(cost))
+        {
+            combatLog.Log("Not enough mana!");
+            return;
+        }
+
         Hand.cardsInHand.Remove(Selected);
         lineRenderer.enabled = false;
         animInProgress = true;
-        if (Selected.data.isLightSide)
+        if (isLight)
         {
             foreach (var effect in Selected.data.lightSide.effects)
             {
@@ -153,6 +164,7 @@ public class GameManager : MonoBehaviour
 
     public void EndPlaySelectedCard()
     {
+        Player.ChangeSource(Selected.data.isLightSide ? Selected.data.lightSide.sourceImpact : Selected.data.darkSide.sourceImpact);
         handFanLayout.FlipCard(Selected, () => handFanLayout.RemoveCard(Selected));
         handFanLayout.UnGreyCards();
         animInProgress = false;
