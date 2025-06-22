@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea4395e0cad0da4283aeaab6dbb4464, type: 3}
-  m_Name: Blob
+  m_Name: Red Slime
   m_EditorClassIdentifier: 
-  Name: Blob
+  Name: Red Slime
   enemySprite: {fileID: 21300000, guid: bf864ba70e029a640b28cc9c92a6027c, type: 3}
   enemyHoveredSprite: {fileID: 21300000, guid: 8d3fced0bad996f47ae4dc370d836309, type: 3}
   maxHealth: 100

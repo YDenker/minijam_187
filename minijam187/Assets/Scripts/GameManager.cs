@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HandFanLayout handFanLayout;
     [SerializeField] private CombatLog combatLog;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private RectTransform animationLayer; 
 
     public HandFanLayout Hand => handFanLayout;
     public CombatLog Log => combatLog;
+    public RectTransform AnimationLayer => animationLayer;
 
     // Card Curve
     public Color32 curveColor;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     public bool IsSelected => Selected != null;
 
     // Internal
+    private bool animInProgress = false;
     private Enemy[] activeEnemies;
     private int playerturn = 0;
     private int enemyturn = 0;
@@ -120,24 +123,32 @@ public class GameManager : MonoBehaviour
             combatLog.Log("Can only play cards during your turn!");
             return;
         }
+        if (animInProgress)
+            return;
         Hand.cardsInHand.Remove(Selected);
+        lineRenderer.enabled = false;
+        animInProgress = true;
         if (Selected.data.isLightSide)
         {
             foreach (var effect in Selected.data.lightSide.effects)
             {
-                effect.Apply(target);
+                effect.Apply(Player,target);
             }
         }
         else
         {
             foreach (var effect in Selected.data.darkSide.effects)
             {
-                effect.Apply(target);
+                effect.Apply(Player,target);
             }
         }
-        handFanLayout.FlipCard(Selected,() => handFanLayout.RemoveCard(Selected));
-        lineRenderer.enabled = false;
+    }
+
+    public void EndPlaySelectedCard()
+    {
+        handFanLayout.FlipCard(Selected, () => handFanLayout.RemoveCard(Selected));
         handFanLayout.UnGreyCards();
+        animInProgress = false;
     }
 
     public void Awake()

@@ -9,9 +9,9 @@ public class EnemyTurn
     public CardEffect effect;
     public Target target;
 
-    public void Apply(IEffected target)
+    public void Apply(IEffected origin, IEffected target)
     {
         int amount = UnityEngine.Random.Range(minAmount, maxAmount);
-        effect.Apply(target, amount);
+        effect.Apply(origin, target, amount);
     }
 }

@@ -3,9 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Draw", menuName = "Scriptable Objects/Effect/Draw")]
 public class DrawEffect : CardEffect
 {
-    public override void Apply(IEffected effected, int amount)
+    public override void Apply(IEffected origin, IEffected effected, int amount)
+    {
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => DrawCards(origin, effected, amount), GameManager.Instance.EndPlaySelectedCard));
+    }
+
+    private void DrawCards(IEffected origin, IEffected effected, int amount)
     {
         GameManager.Instance.Hand.DrawCard(amount);
-        GameManager.Instance.Log.Log("Draw <b>" + amount + "</b> " + (amount > 1 ? "cards.": "card"));
+        GameManager.Instance.Log.Log(origin.Name + " draws <b>" + amount + "</b> " + (amount > 1 ? "cards." : "card."));
     }
 }
