@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Moonlight Flash
     cost: 1
-    sourceImpact: 0
+    sourceImpact: -4
     effectText: Deal $1 damage, then heal self for $2 and draw $3
     art: {fileID: 21300000, guid: 138c2a11058eed4439b6096c05031ded, type: 3}
     effects:
@@ -30,7 +30,7 @@ MonoBehaviour:
   darkSide:
     cardName: Crimson Slash
     cost: 1
-    sourceImpact: 0
+    sourceImpact: 4
     effectText: Deal $1 damage, then $2 to self.
     art: {fileID: 21300000, guid: 2f8b02fcdadf2594f9e76c6828f6ad39, type: 3}
     effects:

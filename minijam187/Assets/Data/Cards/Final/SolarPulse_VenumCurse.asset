@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SolarPulse_VenumCurse
   m_EditorClassIdentifier: 
   ID: 7
-  isLightSide: 0
+  isLightSide: 1
   lightSide:
     cardName: Solar Pulse
     cost: 1
-    sourceImpact: 0
+    sourceImpact: -2
     effectText: Deal $1 damage, then heal self for $2.
     art: {fileID: 21300000, guid: 6f2962af6d0123e4886c4da449d16d8b, type: 3}
     effects:
@@ -28,7 +28,7 @@ MonoBehaviour:
   darkSide:
     cardName: Venom Curse
     cost: 2
-    sourceImpact: 0
+    sourceImpact: 2
     effectText: Deal $1 damage and $2 poison.
     art: {fileID: 21300000, guid: da1f002dbf9281848b906ac7e667f801, type: 3}
     effects:

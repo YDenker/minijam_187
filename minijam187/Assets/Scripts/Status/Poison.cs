@@ -17,6 +17,7 @@ public class Poison : MonoBehaviour
         {
             debuffImage = Instantiate(prefab, this.transform);
         }
+        debuffImage.GetComponent<HoverAmount>().Populate(amount, amount);
         this.amount += amount;
     }
 
@@ -34,6 +35,8 @@ public class Poison : MonoBehaviour
         done = false;
         DamageEffect.ApplyRoundBased(effected, amount, () => done = true);
         amount--;
+
+        debuffImage.GetComponent<HoverAmount>().Populate(amount, amount);
 
         if (amount <= 0)
         {

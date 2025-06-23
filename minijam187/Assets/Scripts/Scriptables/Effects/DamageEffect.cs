@@ -41,7 +41,7 @@ public static class DamageEffectTypeExtensions
         return type switch
         {
             DamageType.LIGHT => "<color=yellow>light</color>",
-            DamageType.DARK => "<color=black>dark</color>",
+            DamageType.DARK => "<color=#595857>dark</color>",
             DamageType.PHYSICAL => "<color=brown>physical</color>",
             DamageType.FIRE => "<color=red>burn</color>",
             DamageType.POISON => "<color=green>poison</color>",

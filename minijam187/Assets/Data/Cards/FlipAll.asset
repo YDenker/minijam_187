@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Are You Serious
     cost: 10
-    sourceImpact: -10
+    sourceImpact: -3
     effectText: Flip all cards in hand.
     art: {fileID: 0}
     effects:

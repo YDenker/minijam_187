@@ -26,6 +26,7 @@ public class HealOverTime : MonoBehaviour
         {
             buffImage = Instantiate(prefab, this.transform);
         }
+        buffImage.GetComponent<HoverAmount>().Populate(amount, duration);
         this.amount = amount;
         this.duration = duration;
     }
@@ -45,6 +46,8 @@ public class HealOverTime : MonoBehaviour
         done = false;
         HealEffect.ApplyRoundBased(effected, amount, () => done = true);
         duration--;
+
+        buffImage.GetComponent<HoverAmount>().Populate(amount, duration);
 
         if (duration <= 0)
         {

@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Sanctuary
     cost: 3
-    sourceImpact: 0
+    sourceImpact: -4
     effectText: Heal $1 this and the next 2 rounds.
     art: {fileID: 21300000, guid: 956ac4aefbdc28542b33e7d5f3d9905c, type: 3}
     effects:
@@ -28,7 +28,7 @@ MonoBehaviour:
   darkSide:
     cardName: Mana Burn
     cost: 0
-    sourceImpact: 0
+    sourceImpact: 4
     effectText: Deal $1 damage for each mana. Lose all mana.
     art: {fileID: 21300000, guid: d4d6e4eff0c4d964f8dfed47682984b0, type: 3}
     effects:

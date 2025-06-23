@@ -26,6 +26,7 @@ public class Burn : MonoBehaviour
         {
             debuffImage = Instantiate(prefab, this.transform);
         }
+        debuffImage.GetComponent<HoverAmount>().Populate(amount, duration);
         this.amount = amount;
         this.duration = duration;
     }
@@ -45,6 +46,8 @@ public class Burn : MonoBehaviour
         done = false;
         DamageEffect.ApplyRoundBased(effected, amount, () => done = true);
         duration--;
+
+        debuffImage.GetComponent<HoverAmount>().Populate(amount, duration);
 
         if (duration <= 0)
         {

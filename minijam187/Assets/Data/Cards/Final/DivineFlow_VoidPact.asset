@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Divine Flow
     cost: 5
-    sourceImpact: -10
+    sourceImpact: -8
     effectText: Deal $1 damage, draw $3, then heal self for $2 and $4 for 3 rounds.
     art: {fileID: 21300000, guid: 1dae08b254d24ac4f8849f1588ed2fec, type: 3}
     effects:
@@ -32,7 +32,7 @@ MonoBehaviour:
   darkSide:
     cardName: Void Pact
     cost: 5
-    sourceImpact: 0
+    sourceImpact: 8
     effectText: Deal $1 damage, apply $3 poison, discard hand.
     art: {fileID: 21300000, guid: acf31ab072f217c418e32ce81f6de449, type: 3}
     effects:

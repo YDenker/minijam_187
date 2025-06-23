@@ -19,8 +19,8 @@ MonoBehaviour:
   damage: 0
   dark: 1
   possibleTurns:
-  - minAmount: 3
-    maxAmount: 6
+  - minAmount: 2
+    maxAmount: 4
     effect: {fileID: 11400000, guid: 538f8c6f3fc4c294db5c00b6841a1471, type: 2}
     target: 1
   - minAmount: 1

@@ -2479,6 +2479,11 @@ MonoBehaviour:
     maxAmount: 0
     effect: {fileID: 11400000, guid: 6b2634edaebdf0743ae7f69cc3c042ee, type: 2}
     target: 0
+  DeadTurnEffect:
+    minAmount: 0
+    maxAmount: 0
+    effect: {fileID: 11400000, guid: c578287065f87d2488dd77aba06129a1, type: 2}
+    target: 0
   player: {fileID: 271669138}
   enemies:
   - {fileID: 973826430}
@@ -3726,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cce91d10ddf304d8881e9ce61b5c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6295145717554317932, guid: 04f1b36c5c177454192c753378177d6f, type: 3}
+  prefab: {fileID: 6295145717554317932, guid: 1b71eb3370e237c47819ba3d4374005b, type: 3}
   DamageEffect: {fileID: 11400000, guid: eff914081f71a654f9da62623d4633d3, type: 2}
 --- !u!114 &1398097753
 MonoBehaviour:
@@ -3754,7 +3759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72974a04b416cfd439136a8376feb300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6295145717554317932, guid: c113ff41c1af69b4e8b68f2ccda35ecb, type: 3}
+  prefab: {fileID: 6295145717554317932, guid: bfad5c3e956c1cc4b8977a8818f5f1f0, type: 3}
   HealEffect: {fileID: 11400000, guid: e680c47b5d7d5da429d440908ffe41b3, type: 2}
 --- !u!114 &1398097755
 MonoBehaviour:
@@ -3903,7 +3908,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4431,7 +4436,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0

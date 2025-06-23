@@ -17,7 +17,7 @@ MonoBehaviour:
   lightSide:
     cardName: Radiant Judgement
     cost: 5
-    sourceImpact: 0
+    sourceImpact: -8
     effectText: Deal $1 damage and stun, then heal self for $2 and draw $3.
     art: {fileID: 21300000, guid: d479e93a274eafa4bb9360bd9c0e8645, type: 3}
     effects:
@@ -32,7 +32,7 @@ MonoBehaviour:
   darkSide:
     cardName: Nova
     cost: 4
-    sourceImpact: 0
+    sourceImpact: 8
     effectText: Deal $1 damage, apply $2 burn and $3 poison, then take $4 damage
       and discard rightmost.
     art: {fileID: 21300000, guid: 8a6f1b6096c1ee94d8911141497a89f2, type: 3}

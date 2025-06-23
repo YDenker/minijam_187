@@ -23,3 +23,7 @@ MonoBehaviour:
     maxAmount: 5
     effect: {fileID: 11400000, guid: 60be3451e8eb2b94cb3532b51477ef3d, type: 2}
     target: 1
+  - minAmount: 5
+    maxAmount: 5
+    effect: {fileID: 11400000, guid: 3d63bba32ae58ba4ab8cebb1b0ca372b, type: 2}
+    target: 1

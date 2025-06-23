@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9297b65133a274fa3157fda0ef1355, type: 3}
-  m_Name: NoAnimation
+  m_Script: {fileID: 11500000, guid: 6d22a722d0e46d749842ef8fe420a67d, type: 3}
+  m_Name: Dead
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  duration: 0.5
+  spellAnimation: {fileID: 11400000, guid: 6761b7fdc952cfc4b9a8007924816571, type: 2}

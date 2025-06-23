@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Candlelight_Smolder
   m_EditorClassIdentifier: 
   ID: 4
-  isLightSide: 1
+  isLightSide: 0
   lightSide:
     cardName: Candlelight
     cost: 0
-    sourceImpact: 2
+    sourceImpact: -2
     effectText: Heal for $1, then draw $2.
     art: {fileID: 21300000, guid: 0f78d2ddd9187a4459a8caa3d0e7834e, type: 3}
     effects:

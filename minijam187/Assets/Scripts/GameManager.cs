@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public EnemyTeam[] EnemyTeamComp;
 
     public EnemyTurn SkipTurnEffect;
+    public EnemyTurn DeadTurnEffect;
 
     // UI References
     [SerializeField] private Player player;
@@ -53,19 +54,31 @@ public class GameManager : MonoBehaviour
     private int playerturn = 0;
     private int enemyturn = 0;
 
-    private List<Enemy> deadEnemies = new();
-
     private int enemyFinishedCount = 0;
     private int effect_finished = 0;
 
     private int teamIndex = 0;
+
+    public int Alive
+    {
+        get
+        {
+            int alive = 0;
+            foreach (Enemy enemy in activeEnemies)
+            {
+                if (!enemy.IsDead)
+                    alive++;
+            }
+            return alive;
+        }
+    }
 
     public void StartGame()
     {
         StartCoroutine(handFanLayout.DrawCard(3, () => SwitchState(GameState.PLAYER)));
     }
 
-    private void WinnerScreen()
+    public void WinnerScreen()
     {
         winnerScreen.SetActive(true);
     }
@@ -73,32 +86,6 @@ public class GameManager : MonoBehaviour
     public void LooserScreen()
     {
         looserScreen.SetActive(true);
-    }
-
-    private void CleanUpDead()
-    {
-        List<int> indices = new();
-        int i = 0;
-        foreach (Enemy enemy in deadEnemies)
-        {
-            if (activeEnemies.Contains<Enemy>(enemy))
-            {
-                indices.Add(i);
-            }
-            i++;
-        }
-        Enemy[] tmp = new Enemy[activeEnemies.Length - indices.Count];
-        for (int j = 0, k = 0; j < activeEnemies.Length; j++, k++)
-        {
-            if (indices.Contains(j))
-                k--;
-            else
-                tmp[k] = activeEnemies[j];
-        }
-        activeEnemies = tmp;
-
-        if (activeEnemies.Length == 0)
-            WinnerScreen();
     }
 
     public void StartTurn()
@@ -138,7 +125,6 @@ public class GameManager : MonoBehaviour
 
     public void SwitchState(GameState state)
     {
-        CleanUpDead();
         this.state = state;
         switch (state)
         {
@@ -166,13 +152,6 @@ public class GameManager : MonoBehaviour
         Selected = card;
         handFanLayout.SelectCard(card);
         lineRenderer.enabled = true;
-    }
-
-    public void Death(Enemy enemy)
-    {
-        Log.Log(enemy.Name +" died!");
-        deadEnemies.Add(enemy);
-        enemy.gameObject.SetActive(false);
     }
 
     public void UnselectCard(Card card)
