@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97685b25a8db33a4bb88ac641eb9010d, type: 3}
   m_Name: DamagePhysical
   m_EditorClassIdentifier: 
-  spellAnimation: {fileID: 11400000, guid: 6761b7fdc952cfc4b9a8007924816571, type: 2}
-  Type: 2
+  spellAnimation: {fileID: 11400000, guid: fda2b68b4e96e0e458e6b0c65fe3eb55, type: 2}
+  Type: 3

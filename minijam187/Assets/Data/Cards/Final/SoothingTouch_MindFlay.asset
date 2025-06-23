@@ -19,7 +19,7 @@ MonoBehaviour:
     cost: 2
     sourceImpact: 0
     effectText: Heal for $1.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 351368f1079722f4ca753019064e5664, type: 3}
     effects:
     - Amount: 4
       CardEffect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
@@ -27,8 +27,10 @@ MonoBehaviour:
     cardName: Mind Flay
     cost: 2
     sourceImpact: 0
-    effectText: Deal $1 damage this round and $2 next round.
-    art: {fileID: 0}
+    effectText: Deal $1 damage, burn for $2 next round.
+    art: {fileID: 21300000, guid: d1e75f0b66ddb12418b4b3b02644d91c, type: 3}
     effects:
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
+    - Amount: 5
+      CardEffect: {fileID: 11400000, guid: dc1c6ccc65bf37340872dc874e7e0dbb, type: 2}

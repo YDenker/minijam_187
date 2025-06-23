@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 [CreateAssetMenu(fileName = "Damage", menuName = "Scriptable Objects/Effect/Damage")]
 public class DamageEffect : CardEffect
@@ -11,6 +11,10 @@ public class DamageEffect : CardEffect
         GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => LooseHealth(origin, effected, amount), (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
     }
 
+    public void ApplyRoundBased(IEffected target, int amount, Action endCallback)
+    {
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(target.GetEffectOrigin(), target.GetEffectTarget(), null, () => LooseHealth(target, target, amount), endCallback));
+    }
     private void LooseHealth(IEffected origin, IEffected effected, int amount)
     {
         if (Type == DamageType.SELF)
@@ -28,7 +32,7 @@ public class DamageEffect : CardEffect
         }
     }
 }
-public enum DamageType { LIGHT, DARK, SELF, PHYSICAL }
+public enum DamageType { LIGHT, DARK, SELF, PHYSICAL, FIRE, POISON }
 
 public static class DamageEffectTypeExtensions
 {
@@ -39,6 +43,8 @@ public static class DamageEffectTypeExtensions
             DamageType.LIGHT => "<color=yellow>light</color>",
             DamageType.DARK => "<color=black>dark</color>",
             DamageType.PHYSICAL => "<color=brown>physical</color>",
+            DamageType.FIRE => "<color=red>burn</color>",
+            DamageType.POISON => "<color=green>poison</color>",
             _ => "unknown",
         };
     }

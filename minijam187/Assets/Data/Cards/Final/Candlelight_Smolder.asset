@@ -17,9 +17,9 @@ MonoBehaviour:
   lightSide:
     cardName: Candlelight
     cost: 0
-    sourceImpact: 0
+    sourceImpact: 2
     effectText: Heal for $1, then draw $2.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 0f78d2ddd9187a4459a8caa3d0e7834e, type: 3}
     effects:
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
@@ -28,9 +28,11 @@ MonoBehaviour:
   darkSide:
     cardName: Smolder
     cost: 1
-    sourceImpact: 0
-    effectText: Deal $1 damage to self, then burn target for 3 rounds.
-    art: {fileID: 0}
+    sourceImpact: 2
+    effectText: Deal $1 damage to self, then apply 2 burn for 3 rounds.
+    art: {fileID: 21300000, guid: 07d96f4896cdc4b45b0f969fe2366be2, type: 3}
     effects:
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: 957cfcda07ff5804fbca2a111342d165, type: 2}
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 538f8c6f3fc4c294db5c00b6841a1471, type: 2}

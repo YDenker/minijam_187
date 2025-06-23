@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
@@ -13,6 +14,12 @@ public class HealEffect : CardEffect
         }
         GameManager.Instance.StartCoroutine(spellAnimation.Play(origin.GetEffectOrigin(), effected.GetEffectTarget(), null, () => GainHealth(origin, effected, amount), (fromCard ? GameManager.Instance.EndPlaySelectedCard : GameManager.Instance.DoEnemyTurn)));
     }
+
+    public void ApplyRoundBased(IEffected target, int amount, Action endCallback)
+    {
+        GameManager.Instance.StartCoroutine(spellAnimation.Play(target.GetEffectOrigin(), target.GetEffectTarget(), null, () => GainHealth(target, target, amount), endCallback));
+    }
+
     private void GainHealth(IEffected origin, IEffected effected, int amount)
     {
         int actual = effected.Heal(this, amount);

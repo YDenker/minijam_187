@@ -20,6 +20,7 @@ public class Player : Entity
     private int maxSource;
 
     public int MaxMana => maxMana;
+    public int MaxSource => maxSource;
 
     public int ChangeSource(int amount)
     {
@@ -61,6 +62,8 @@ public class Player : Entity
     public void Populate(PlayerStats stats)
     {
         entityName = stats.Name;
+        namePlate.text = stats.Name;
+        namePlate.gameObject.SetActive(false);
         maxHealth = stats.MaxHealth;
         maxMana = stats.maxMana;
         mana = maxMana;
@@ -98,6 +101,57 @@ public class Player : Entity
         mana_text.text = mana.ToString();
     }
 
+    public override int Heal(HealEffect effect, int amount)
+    {
+        if (antihealStatus.IsAfflicted)
+            return 0;
+        float third = ((float)maxSource) / 3f;
+        if (source > third)
+            amount = Mathf.CeilToInt(((float)amount) / 2f);
+        else if (source > third * 2)
+            amount = Mathf.CeilToInt(((float)amount) / 3f);
+        else if (source == maxSource)
+            amount = Mathf.CeilToInt(((float)amount) / 4f);
+
+        if (source < -third)
+            amount *= 2;
+        else if (source < -(third * 2))
+            amount *= 3;
+        else if (source == -maxSource)
+            amount *= 4;
+        int tmp = currentHealth;
+        currentHealth += amount;
+        currentHealth = Mathf.Min(maxHealth, currentHealth);
+        UpdateHealth();
+        return currentHealth - tmp;
+    }
+
+    public override int TakeDamage(DamageEffect effect, int amount)
+    {
+        float third = ((float)maxSource) / 3f;
+        if (source > third)
+            amount *= 2;
+        else if (source > third * 2)
+            amount *= 3;
+        else if (source == maxSource)
+            amount *= 4;
+
+        if (effect.Type == DamageType.LIGHT && source < -(third*2))
+            amount = Mathf.CeilToInt(((float)amount) / 3f);
+        else if (effect.Type == DamageType.LIGHT && source == -maxSource)
+            amount = Mathf.CeilToInt(((float)amount) / 4f);
+
+        int tmp = currentHealth;
+        currentHealth -= amount;
+        currentHealth = Mathf.Max(0, currentHealth);
+        UpdateHealth();
+
+        if (currentHealth <= 0)
+            GameManager.Instance.LooserScreen();
+
+        return tmp - currentHealth;
+    }
+
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
@@ -109,7 +163,8 @@ public class Player : Entity
         }
         else
         {
-
+            nameplateOn = !nameplateOn;
+            namePlate.gameObject.SetActive(nameplateOn);
         }
     }
 }

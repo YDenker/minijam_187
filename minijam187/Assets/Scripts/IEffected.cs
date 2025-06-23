@@ -6,6 +6,7 @@ public interface IEffected
     public int Heal(HealEffect healthEffect, int amount);
     public int TakeDamage(DamageEffect damageEffect, int amount);
     public bool GainStatus(StatusEffect statusEffect, int amount);
+    public bool RemoveDebuffs();
 
     public Vector2 GetEffectOrigin();
     public Vector2 GetEffectTarget();

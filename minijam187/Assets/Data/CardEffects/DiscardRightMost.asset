@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88b6cfe2d033334a832204f83d08a08, type: 3}
   m_Name: DiscardRightMost
   m_EditorClassIdentifier: 
-  spellAnimation: {fileID: 0}
+  spellAnimation: {fileID: 11400000, guid: 6761b7fdc952cfc4b9a8007924816571, type: 2}
   CardsToDiscard: 1

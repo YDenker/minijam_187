@@ -19,7 +19,7 @@ MonoBehaviour:
     cost: 1
     sourceImpact: 0
     effectText: Deal $1 damage, then heal self for $2 and draw $3
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 138c2a11058eed4439b6096c05031ded, type: 3}
     effects:
     - Amount: 4
       CardEffect: {fileID: 11400000, guid: 19214b8b851fdfa42b9dc9e8411e8e89, type: 2}
@@ -32,7 +32,7 @@ MonoBehaviour:
     cost: 1
     sourceImpact: 0
     effectText: Deal $1 damage, then $2 to self.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 2f8b02fcdadf2594f9e76c6828f6ad39, type: 3}
     effects:
     - Amount: 10
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}

@@ -19,7 +19,7 @@ MonoBehaviour:
     cost: 1
     sourceImpact: 0
     effectText: Deal $1 damage.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: d567423a1747c4d49b0f5f5c2692b188, type: 3}
     effects:
     - Amount: 3
       CardEffect: {fileID: 11400000, guid: 19214b8b851fdfa42b9dc9e8411e8e89, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
     cost: 1
     sourceImpact: 0
     effectText: Deal $1 damage, then $2 to yourself.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 099c7f9989b6d1244a723e958f843d9a, type: 3}
     effects:
     - Amount: 4
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}

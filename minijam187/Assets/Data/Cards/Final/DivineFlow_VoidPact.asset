@@ -17,9 +17,9 @@ MonoBehaviour:
   lightSide:
     cardName: Divine Flow
     cost: 5
-    sourceImpact: 0
-    effectText: Deal $1 damage, then heal self for $2 and $4 for 3 rounds
-    art: {fileID: 0}
+    sourceImpact: -10
+    effectText: Deal $1 damage, draw $3, then heal self for $2 and $4 for 3 rounds.
+    art: {fileID: 21300000, guid: 1dae08b254d24ac4f8849f1588ed2fec, type: 3}
     effects:
     - Amount: 2
       CardEffect: {fileID: 11400000, guid: 19214b8b851fdfa42b9dc9e8411e8e89, type: 2}
@@ -27,14 +27,18 @@ MonoBehaviour:
       CardEffect: {fileID: 11400000, guid: e680c47b5d7d5da429d440908ffe41b3, type: 2}
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
+    - Amount: 3
+      CardEffect: {fileID: 11400000, guid: 4b312d121d7f8b14eb727357a05fd3b1, type: 2}
   darkSide:
     cardName: Void Pact
     cost: 5
     sourceImpact: 0
     effectText: Deal $1 damage, apply $3 poison, discard hand.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: acf31ab072f217c418e32ce81f6de449, type: 3}
     effects:
     - Amount: 8
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
     - Amount: 0
       CardEffect: {fileID: 11400000, guid: 74dce1faf795e664f80a20d6c387a8ad, type: 2}
+    - Amount: 5
+      CardEffect: {fileID: 11400000, guid: fb04b153e15d9984da71e5de374f6f8c, type: 2}

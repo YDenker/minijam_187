@@ -25,6 +25,7 @@ public class Deck : MonoBehaviour
     {
         foreach (CardData card in deck.Cards)
         {
+            card.isLightSide = 0.5f > Random.Range(0f, 1f);
             DrawPile.Add(card.GetRuntimeData());
         }
         DrawCounts();

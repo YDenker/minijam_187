@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b40d3c1f91e24a9f9dd6105495582, type: 3}
+  m_Name: Team Happy
+  m_EditorClassIdentifier: 
+  Name: Team Happy
+  enemyData:
+  - {fileID: 11400000, guid: 66a459ac2801ec9438ef5912f1f30d63, type: 2}
+  - {fileID: 11400000, guid: 8dffe13088c21204a9a70142fc476a5d, type: 2}
+  - {fileID: 11400000, guid: 65ea8478d94e41d48b75dda619617bbf, type: 2}

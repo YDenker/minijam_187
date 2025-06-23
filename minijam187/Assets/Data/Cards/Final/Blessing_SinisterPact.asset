@@ -17,20 +17,27 @@ MonoBehaviour:
   lightSide:
     cardName: Blessing
     cost: 2
-    sourceImpact: 0
+    sourceImpact: -6
     effectText: Heal for $1, then draw $2. Cleanse Debuffs.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: ed2c4de2441237440a0129a19f3a87ac, type: 3}
     effects:
     - Amount: 3
       CardEffect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
+    - Amount: 1
+      CardEffect: {fileID: 11400000, guid: 2dcdb7b1a43a57d49b5e978ee445c4c5, type: 2}
   darkSide:
     cardName: Sinister Pact
     cost: 2
-    sourceImpact: 0
-    effectText: Discard $1 rightmost cards, then apply burn $2 and posion $3.
-    art: {fileID: 0}
+    sourceImpact: 6
+    effectText: Discard $1 rightmost cards, then apply $2 burn and $3 posion for
+      3 rounds.
+    art: {fileID: 21300000, guid: cd4be24b11a3ba74aba145bf9349fb0f, type: 3}
     effects:
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: 9b4fef71f11034e4a9c025b65f3e5e31, type: 2}
+    - Amount: 3
+      CardEffect: {fileID: 11400000, guid: 538f8c6f3fc4c294db5c00b6841a1471, type: 2}
+    - Amount: 3
+      CardEffect: {fileID: 11400000, guid: da3112d999a2574438f2752c102149b3, type: 2}

@@ -13,26 +13,28 @@ MonoBehaviour:
   m_Name: Glow_FoolishAmbitions
   m_EditorClassIdentifier: 
   ID: 6
-  isLightSide: 1
+  isLightSide: 0
   lightSide:
     cardName: Glow
     cost: 1
-    sourceImpact: 0
+    sourceImpact: -2
     effectText: Turn the $1 leftmost cards around, then draw $2
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: cd8637cd5c0f6074981380edb7f6da97, type: 3}
     effects:
     - Amount: 1
       CardEffect: {fileID: 11400000, guid: f3ecd3e62bff8664ca67d017a1bbf5e8, type: 2}
-    - Amount: 1
+    - Amount: 2
       CardEffect: {fileID: 11400000, guid: 02882ed5da141fb4195937c13cab2377, type: 2}
   darkSide:
     cardName: Foolish Ambition
     cost: 0
-    sourceImpact: 0
+    sourceImpact: 2
     effectText: Deal $1 damage, then 3 to self. Cannot heal for 2 rounds.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: b84dd90b0ba94e8468bb97031f450f8c, type: 3}
     effects:
     - Amount: 15
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
     - Amount: 3
       CardEffect: {fileID: 11400000, guid: 957cfcda07ff5804fbca2a111342d165, type: 2}
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 1527ed2a457f3d54299610d5339ce94c, type: 2}

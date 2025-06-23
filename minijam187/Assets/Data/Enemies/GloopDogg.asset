@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea4395e0cad0da4283aeaab6dbb4464, type: 3}
+  m_Name: GloopDogg
+  m_EditorClassIdentifier: 
+  Name: GloopDog
+  enemySprite: {fileID: 21300000, guid: 10b1fc786683b23498a12e77b1872e27, type: 3}
+  enemyHoveredSprite: {fileID: 21300000, guid: caafe9a3662374848a4a8f2bec390c7c, type: 3}
+  maxHealth: 150
+  damage: 0
+  dark: 1
+  possibleTurns:
+  - minAmount: 5
+    maxAmount: 5
+    effect: {fileID: 11400000, guid: fb04b153e15d9984da71e5de374f6f8c, type: 2}
+    target: 1
+  - minAmount: 4
+    maxAmount: 7
+    effect: {fileID: 11400000, guid: 60be3451e8eb2b94cb3532b51477ef3d, type: 2}
+    target: 1
+  - minAmount: 1
+    maxAmount: 3
+    effect: {fileID: 11400000, guid: 430e799578d1a884eb72c779a5cf0111, type: 2}
+    target: 0

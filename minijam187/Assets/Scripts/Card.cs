@@ -10,7 +10,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private TMP_Text cost_text;
     [SerializeField] private TMP_Text name_text;
     [SerializeField] private TMP_Text effect_text;
-    [SerializeField] private RawImage image;
+    [SerializeField] private Image image;
     [SerializeField] private RawImage background;
     [SerializeField] private RawImage foreground;
 
@@ -53,6 +53,9 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         name_text.text = data.isLightSide ? data.lightSide.cardName : data.darkSide.cardName;
         cost_text.text = data.isLightSide ? data.lightSide.cost.ToString() : data.darkSide.cost.ToString();
         effect_text.text = data.isLightSide ? data.lightSide.EffectText : data.darkSide.EffectText;
+        Sprite tmp = data.isLightSide ? data.lightSide.art : data.darkSide.art;
+        if (tmp != null)
+            image.sprite = tmp;
         foreground.enabled = false;
         PaintHover();
     }

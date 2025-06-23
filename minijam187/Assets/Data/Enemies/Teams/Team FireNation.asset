@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b40d3c1f91e24a9f9dd6105495582, type: 3}
+  m_Name: Team FireNation
+  m_EditorClassIdentifier: 
+  Name: Team Fire Nation
+  enemyData:
+  - {fileID: 11400000, guid: dc95160336adb4246a3b3cb151c44033, type: 2}
+  - {fileID: 11400000, guid: d2f65628540d8cf44a652988307cc9b2, type: 2}
+  - {fileID: 11400000, guid: 8d6fbe321dfe0cf4fa2daf0bbff2f25f, type: 2}

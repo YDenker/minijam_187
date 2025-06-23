@@ -10,10 +10,17 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
     protected int maxHealth;
 
     // UI References
+    [SerializeField] protected TMP_Text namePlate;
     [SerializeField] protected GameObject effects_parent;
     [SerializeField] protected TMP_Text health_text;
     [SerializeField] protected Slider health_slider;
     [SerializeField] protected RawImage sprite;
+
+    [SerializeField] protected Burn burnStatus;
+    [SerializeField] protected Poison poisonStatus;
+    [SerializeField] protected HealOverTime healOverTimeStatus;
+    [SerializeField] protected AntiHeal antihealStatus;
+    [SerializeField] protected Stun stunStatus;
 
     public Vector2 AnimationOrigin;
     public Vector2 AnimationTarget;
@@ -24,7 +31,8 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     // Internal
     private bool isHovered = false;
-
+    protected bool nameplateOn = false;
+    public bool IsStunned => stunStatus.IsStunned;
     public string Name => entityName;
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
@@ -40,13 +48,58 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
         health_text.text = currentHealth.ToString() + "/" + maxHealth.ToString();
     }
 
-    public bool GainStatus(StatusEffect effect, int amount)
+    public void HandleDebuffs()
     {
-        throw new System.NotImplementedException();
+        if (burnStatus.IsBurning)
+            burnStatus.Tick(this);
+        if(poisonStatus.IsPoisioned)
+            poisonStatus.Tick(this);
+        if (healOverTimeStatus.IsAffected)
+            healOverTimeStatus.Tick(this);
+        if(antihealStatus.IsAfflicted)
+            antihealStatus.Tick(this);
+        if (stunStatus.IsStunned)
+            stunStatus.Tick();
     }
 
-    public int Heal(HealEffect effect, int amount)
+    public bool GainStatus(StatusEffect effect, int amount)
     {
+        switch (effect.status)
+        {
+            case StatusEffect.Status.BURN:
+                burnStatus.Ignite(amount,effect.duration);
+                break;
+            case StatusEffect.Status.POISON:
+                poisonStatus.Intoxicate(amount);
+                break;
+            case StatusEffect.Status.HEALOVERTIME:
+                healOverTimeStatus.Mend(amount, effect.duration);
+                break;
+            case StatusEffect.Status.HEALPREVENTION:
+                healOverTimeStatus.Remove();
+                antihealStatus.Infest(amount);
+                break;
+            case StatusEffect.Status.STUN:
+                stunStatus.Bonk(effect.duration);
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+    public bool RemoveDebuffs()
+    {
+        burnStatus.Cleanse();
+        poisonStatus.Cleanse();
+        antihealStatus.Cleanse();
+        stunStatus.Cleanse();
+        return true;
+    }
+
+    public virtual int Heal(HealEffect effect, int amount)
+    {
+        if (antihealStatus.IsAfflicted)
+            return 0;
         int tmp = currentHealth;
         currentHealth += amount;
         currentHealth = Mathf.Min(maxHealth, currentHealth);
@@ -54,7 +107,7 @@ public abstract class Entity : MonoBehaviour, IPointerEnterHandler, IPointerExit
         return currentHealth - tmp;
     }
 
-    public int TakeDamage(DamageEffect effect, int amount)
+    public virtual int TakeDamage(DamageEffect effect, int amount)
     {
         int tmp = currentHealth;
         currentHealth -= amount;

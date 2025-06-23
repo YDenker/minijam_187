@@ -19,14 +19,16 @@ MonoBehaviour:
     cost: 1
     sourceImpact: 0
     effectText: Heal $1 for the next 2 rounds.
-    art: {fileID: 0}
-    effects: []
+    art: {fileID: 21300000, guid: 8c51dbf08cfa43a488b6418c2ff78cc7, type: 3}
+    effects:
+    - Amount: 2
+      CardEffect: {fileID: 11400000, guid: 430e799578d1a884eb72c779a5cf0111, type: 2}
   darkSide:
     cardName: Dark Spark
     cost: 1
     sourceImpact: 0
     effectText: Deal $1 damage.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: c6df44649bc9a0847968ef55e07d5db4, type: 3}
     effects:
     - Amount: 5
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}

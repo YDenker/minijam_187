@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b40d3c1f91e24a9f9dd6105495582, type: 3}
+  m_Name: Team Celebrity
+  m_EditorClassIdentifier: 
+  Name: Team Celebrity
+  enemyData:
+  - {fileID: 11400000, guid: 9736ea83d9e49ae4ab1f2a0ad6ef53e2, type: 2}
+  - {fileID: 11400000, guid: 8bd1ad945d0bcf74196fb73ddfcb43dc, type: 2}
+  - {fileID: 11400000, guid: 7510dadfc4888874e9ba42aa85c66fa9, type: 2}

@@ -49,7 +49,7 @@ public class CardData : ScriptableObject
     {
         public string cardName;
         public int cost;
-        [Range(-10,10)] public int sourceImpact;
+        [Range(-12,12)] public int sourceImpact;
         [SerializeField] private string effectText;
         public Sprite art;
         // EFFECT
@@ -78,7 +78,7 @@ public class CardData : ScriptableObject
     {
         public string cardName;
         public int cost;
-        [Range(-10, 10)] public int sourceImpact;
+        [Range(-12, 12)] public int sourceImpact;
         [SerializeField] private string effectText;
         public Sprite art;
         // EFFECT

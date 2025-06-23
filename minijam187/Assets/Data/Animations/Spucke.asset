@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7671dc6d39e229439e2288ba35d9ab9, type: 3}
+  m_Name: Spucke
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7906683831253233352, guid: bbc8e7ef9cf3e9d479d26b94bbb2769f, type: 3}
+  duration: 0.5
+  projectiles:
+  - {fileID: 3306466127782021146, guid: 7e52c6f89ed5ac2428e2dde015ff32fc, type: 3}
+  - {fileID: 3911069299065238537, guid: 61a1cdad85d78a949b7b4c195c05bd6b, type: 3}
+  - {fileID: -7829887767275788929, guid: a4e2bf7b9fbac584b98cfd56603fc74e, type: 3}
+  - {fileID: 3064289999208667854, guid: 01a0b400d57d1b1468c3c205a873c9a8, type: 3}
+  - {fileID: -175372380984565148, guid: 714cec5f3dfbdb04582bb872b0719d44, type: 3}
+  - {fileID: -6829604092340362187, guid: b0a13de564be26f4bad9f57c998bcc43, type: 3}
+  - {fileID: 8075830398445021113, guid: bfced0892c27b424a8ceef98b88d7087, type: 3}
+  frameRate: 7

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea4395e0cad0da4283aeaab6dbb4464, type: 3}
+  m_Name: Slimerella
+  m_EditorClassIdentifier: 
+  Name: Slimerella
+  enemySprite: {fileID: 21300000, guid: 4d4f21c0e9e81ea47a869cb32ad55bac, type: 3}
+  enemyHoveredSprite: {fileID: 21300000, guid: dd96fe67ab300864cb7585c6813cdd6b, type: 3}
+  maxHealth: 200
+  damage: 0
+  dark: 0
+  possibleTurns:
+  - minAmount: 5
+    maxAmount: 10
+    effect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
+    target: 0
+  - minAmount: 2
+    maxAmount: 2
+    effect: {fileID: 11400000, guid: 2dcdb7b1a43a57d49b5e978ee445c4c5, type: 2}
+    target: 0
+  - minAmount: 2
+    maxAmount: 4
+    effect: {fileID: 11400000, guid: 430e799578d1a884eb72c779a5cf0111, type: 2}
+    target: 0
+  - minAmount: 1
+    maxAmount: 3
+    effect: {fileID: 11400000, guid: 3d63bba32ae58ba4ab8cebb1b0ca372b, type: 2}
+    target: 1
+  - minAmount: 4
+    maxAmount: 8
+    effect: {fileID: 11400000, guid: 3d63bba32ae58ba4ab8cebb1b0ca372b, type: 2}
+    target: 0

@@ -19,7 +19,7 @@ MonoBehaviour:
     cost: 2
     sourceImpact: 0
     effectText: Heal for $1, then draw $2.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: ba20fe9a398cd40479e5c28e248cb120, type: 3}
     effects:
     - Amount: 2
       CardEffect: {fileID: 11400000, guid: f7711e44a0c9f37449976688f1995a4f, type: 2}
@@ -30,7 +30,7 @@ MonoBehaviour:
     cost: 0
     sourceImpact: 0
     effectText: Deal $1 to target, then $2 to yourself.
-    art: {fileID: 0}
+    art: {fileID: 21300000, guid: 9ddde782958223c4c8efd5552fa85b81, type: 3}
     effects:
     - Amount: 10
       CardEffect: {fileID: 11400000, guid: f7976bf85cefd0e4f82197ee18117073, type: 2}
